@@ -20,10 +20,9 @@ def get_name(name="world"):
 def get_name(name="world"):
     return template("hello.tpl", name="Bob", extra=None)
 
-@route("/greetings")
-@route("/greetings/<names>")
-def get_name(names="world"):
+@route("/greeting/<names>")
+def get_greeting(names):
     names = names.split(',')
-    return template("greetings.tpl", name=names)
+    return template("greetings", names=names)
 
 run(host="localhost", port=8080)
